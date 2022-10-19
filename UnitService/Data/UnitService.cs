@@ -16,17 +16,17 @@
             "Ilgam"
         };
 
-        public Task<Unit[]> GetForecastAsync()
+        public Task<Unit[]> GetUnitAsync()
         {
-            return Task.FromResult(Enumerable.Range(1, 5).Select(index => new Unit
+            return Task.FromResult(Enumerable.Range(1, Random.Shared.Next(Names.Length)).Select(index => new Unit
             {
                 Name = Names[Random.Shared.Next(Names.Length)],
                 DateBirthDay = RandomDay()
             }).ToArray());
         }
 
-        private static DateTime start = new DateTime(1995, 1, 1);
-        private static int range = (DateTime.Now - new DateTime(1995, 1, 1)).Days;
+        private static readonly DateTime start = new DateTime(1995, 1, 1);
+        private static readonly int range = (DateTime.Now - new DateTime(1995, 1, 1)).Days;
 
         private static DateTime RandomDay()
         {
